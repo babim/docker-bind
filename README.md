@@ -10,7 +10,7 @@ docker run -it --name dns babim/bind
 ```
 FORWARD1
 FORWARD2
-$DOMAIN
+DOMAIN
 NS1
 MAIL
 POP3
