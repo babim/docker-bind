@@ -3,13 +3,14 @@
 # value
 FORWARD1=${FORWARD1:-8.8.8.8}
 FORWARD2=${FORWARD1:-8.8.4.4}
-$DOMAIN=${DOMAIN:-example.lan}
-NS1${NS1:-192.168.0.1}
-MAIL${MAIL:-192.168.0.1}
-POP3${POP3:-192.168.0.1}
-IMAP${IMAP:-192.168.0.1}
-IMAP4${IMAP4:-192.168.0.1}
-SMTP${SMTP${:-192.168.0.1}
+DOMAIN=${DOMAIN:-example.lan}
+NS1=${NS1:-192.168.0.1}
+MAIL=${MAIL:-192.168.0.1}
+POP3=${POP3:-192.168.0.1}
+IMAP=${IMAP:-192.168.0.1}
+IMAP4=${IMAP4:-192.168.0.1}
+SMTP=${SMTP:-192.168.0.1}
+PIDFILE=${PIDFILE:-/var/run/named/named.pid}
 
 # set config
 if [ ! -f "/etc/bind/named.conf" ]; then
@@ -23,7 +24,7 @@ options {
 
 	listen-on port 53 { any; };
 	listen-on-v6 { none; };
-	pid-file "/var/run/named/named.pid";
+	pid-file "$PIDFILE";
 	allow-transfer { none; };
 	allow-query     { any; };
 	recursion yes;
