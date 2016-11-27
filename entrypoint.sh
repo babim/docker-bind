@@ -3,7 +3,9 @@
 # value
 FORWARD1=${FORWARD1:-8.8.8.8}
 FORWARD2=${FORWARD1:-8.8.4.4}
-DOMAIN=${DOMAIN:-example.lan}
+HOSTNAME=$(hostname -s)
+DOMAIN=$(hostname -d)
+DOMAIN1=${DOMAIN:-example.lan}
 NS1=${NS1:-192.168.0.1}
 MAIL=${MAIL:-192.168.0.1}
 POP3=${POP3:-192.168.0.1}
@@ -50,26 +52,27 @@ zone "127.in-addr.arpa" IN {
 	file "pri/127.zone";
 	allow-update { none; };
 	notify no;
-  
-zone "$DOMAIN" {
+};
+ 
+zone "$DOMAIN1" {
         type master;
-        file "/etc/bind/db.$DOMAIN";
+        file "/etc/bind/db.$DOMAIN1";
 };
 EOF
-touch /etc/bind/db.$DOMAIN
-cat <<EOF >/etc/bind/db.$DOMAIN
+touch /etc/bind/db.$DOMAIN1
+cat <<EOF >/etc/bind/db.$DOMAIN1
 \$TTL  604800
-@      IN      SOA    ns1.$DOMAIN. root.localhost. (
+@      IN      SOA    ns1.$DOMAIN1. root.localhost. (
                               2        ; Serial
                         604800        ; Refresh
                           86400        ; Retry
                         2419200        ; Expire
                         604800 )      ; Negative Cache TTL
 ;
-@     IN      NS      ns1.$DOMAIN.
-@     IN      A      $CONTAINERIP
-@     IN      MX     10     $HOSTNAME.$DOMAIN.
-$HOSTNAME     IN      A      $CONTAINERIP
+@     IN      NS      ns1.$DOMAIN1.
+@     IN      A      $NS1
+@     IN      MX     10     $HOSTNAME.$DOMAIN1.
+$HOSTNAME     IN      A      $NS1
 ns1     IN      A      $NS1
 mail     IN      A      $MAIL
 pop3     IN      A      $POP3
