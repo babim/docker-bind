@@ -17,6 +17,7 @@ POP3
 IMAP
 IMAP4
 SMTP
+PIDFILE
 ```
 
 # Default without -e
