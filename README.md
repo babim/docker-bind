@@ -3,7 +3,7 @@ bind dns on Alpine Linux
 
 # Run
 ```
-docker run -it --name dns babim/bind
+docker run -it --name dns -p 53:53/udp babim/bind
 ```
 
 # environment value (with -e)
