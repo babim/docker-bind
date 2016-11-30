@@ -1,3 +1,5 @@
+[![](https://images.microbadger.com/badges/image/babim/bind.svg)](https://microbadger.com/images/babim/bind "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/babim/bind.svg)](https://microbadger.com/images/babim/bind "Get your own version badge on microbadger.com")
+
 # docker-bind
 bind dns on Alpine Linux
 
