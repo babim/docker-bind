@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # value
 FORWARD1=${FORWARD1:-8.8.8.8}
@@ -81,5 +81,8 @@ imap4     IN      A      $IMAP4
 smtp     IN      A      $SMTP
 EOF
 fi
+
+# option with entrypoint
+if [ -f "/option.sh" ]; then /option.sh; fi
 
 exec "$@"
